@@ -18,9 +18,16 @@ describe "UserPages" do
   	describe " with invalid information " do
   		it "should not create a user" do
   			expect { click_button submit }.not_to change(User, :count)
-  			
-  		end	
+  		end
+      
+       describe "after submission" do
+        before { click_button submit }
+
+        it { should have_content('error') }
+      end
+	
     end
+
   # create test information valid
   describe " with valid information " do
    before do
@@ -30,6 +37,7 @@ describe "UserPages" do
    	fill_in "Password Confirmation", with: "12345678"
 
   end  
+
 
   it "should create user" do
   	expect { click_button submit }.to change(User, :count).by(1)
