@@ -1,5 +1,8 @@
 DemoApp::Application.routes.draw do
 
+  resources :posts
+
+
   get "users/new"
 
   resources :users
